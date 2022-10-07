@@ -17,6 +17,11 @@ public class ArvoreAvl<T extends Comparable<T>> {
     }
   
     private Elemento raiz;
+    private int quantidadeOperacoes;
+
+    public int getQuantidadeOperacoes() {
+        return quantidadeOperacoes;
+    }
 
     public boolean isVazia() {
         return raiz == null;
@@ -26,9 +31,9 @@ public class ArvoreAvl<T extends Comparable<T>> {
         Elemento e = new Elemento(valor);
         Elemento pai = this.raiz;
 
-        System.out.println("Adicionando " + valor);
-
         while (pai != null) {
+            // Conta uma verificação do while, uma verificação para ver o tamanho do valor e outra para ver se posiciona na esquerda ou direita
+            quantidadeOperacoes += 3;
             if (valor.compareTo(pai.valor) < 0) {
                 if (pai.esquerda == null) {
                     e.pai = pai;
@@ -60,22 +65,21 @@ public class ArvoreAvl<T extends Comparable<T>> {
         while (elemento != null) {
             int fator = fb(elemento);
 
+            quantidadeOperacoes++;
             if (fator > 1) {
+                quantidadeOperacoes++;
                 //Arvore mais profunda para esquerda, rotação para a direita
                 if (fb(elemento.esquerda) > 0) {
-                    System.out.println("RSD(" + elemento.valor + ")");
                     rsd(elemento);
                 } else {
-                    System.out.println("RDD(" + elemento.valor + ")");
                     rdd(elemento);
                 }
             } else if (fator < -1) {
+                quantidadeOperacoes++;
                 //Arvore mais profunda para direita, rotação para a esquerda
                 if (fb(elemento.direita) < 0) {
-                    System.out.println("RSE(" + elemento.valor + ")");
                     rse(elemento);
                 } else {
-                    System.out.println("RDE(" + elemento.valor + ")");
                     rde(elemento);
                 }
             }
@@ -259,10 +263,12 @@ public class ArvoreAvl<T extends Comparable<T>> {
         direita.esquerda = e;
         direita.pai = pai;
 
+        quantidadeOperacoes++;
         if (direita.pai == null) {
             this.raiz = direita;
         } else {
-             if (pai.esquerda == e) {
+            quantidadeOperacoes++;
+            if (pai.esquerda == e) {
                 pai.esquerda = direita;
             } else {
                 pai.direita = direita;
@@ -282,9 +288,11 @@ public class ArvoreAvl<T extends Comparable<T>> {
         esquerda.direita = e;
         esquerda.pai = pai;
 
+        quantidadeOperacoes++;
         if (esquerda.pai == null) {
             this.raiz = esquerda;
         } else {
+            quantidadeOperacoes++;
             if (pai.esquerda == e) {
                 pai.esquerda = esquerda;
             } else {
@@ -304,14 +312,5 @@ public class ArvoreAvl<T extends Comparable<T>> {
         e.esquerda = rse(e.esquerda);
         return rsd(e);
     }
-
-    public static void main(String args[]) {
-        ArvoreAvl<Integer> a = new ArvoreAvl<>();
-        
-        a.adicionar(3);
-        a.adicionar(1);
-        a.adicionar(2);
-
-        System.out.println("Altura da arvore: " + (a.altura(a.raiz) + 1));
-    }
+    
 }

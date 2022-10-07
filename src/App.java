@@ -1,5 +1,9 @@
+import Testes.TesteArvoreAvl;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        TesteArvoreAvl testeAvl = new TesteArvoreAvl();
+
+        testeAvl.piorCaso();
     }
 }
