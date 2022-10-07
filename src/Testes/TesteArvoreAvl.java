@@ -21,21 +21,26 @@ public class TesteArvoreAvl {
         }
     }
 
-    public void casoMedio() {
+    /*
+     *  Teste desconsiderado.
+     */
+    // public void casoMedio() {
+    //     for (int tamanhoVetor = 1; tamanhoVetor <= 1000; tamanhoVetor++) {
+    //         int soma = 0;
+            
+    //         for (int numeroExecucoes = 0; numeroExecucoes < 10; numeroExecucoes++) {
+    //             int vetor[] = CriaVetor.criaVetorAleatorio(tamanhoVetor);
+    //             ArvoreAvl<Integer> arvore = new ArvoreAvl<>();
+    
+    //             for (int valor : vetor) {
+    //                 arvore.adicionar(valor);
+    //             }
+    
+    //             soma += arvore.getQuantidadeOperacoes();
+    //         }
 
-        for (int tamanhoVetor = 1; tamanhoVetor <= 1000; tamanhoVetor++) {
-            int vetor[] = CriaVetor.criaVetorAleatorio(tamanhoVetor);
-            ArvoreAvl<Integer> arvore = new ArvoreAvl<>();
-            int quantidadeOperacoes;
-
-            for (int valor : vetor) {
-                arvore.adicionar(valor);
-            }
-
-            quantidadeOperacoes = arvore.getQuantidadeOperacoes();
-
-            System.out.println("Vetor com tamanho " + tamanhoVetor + ", realizado " + quantidadeOperacoes + " para incluir e balancear.");
-        }
-    }
+    //         System.out.println("Vetor com tamanho " + tamanhoVetor + ", realizado " + (soma / 10) + " para incluir e balancear.");
+    //     }
+    // }
 
 }

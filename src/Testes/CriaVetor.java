@@ -8,7 +8,7 @@ public class CriaVetor {
         int vetor[] = new int[tamanho];
 
         for (int i = 0; i < tamanho; i++) {
-            vetor[i] = (int) (Math.random() * 100);
+            vetor[i] = (int) (Math.random() * 1000);
         }
 
         return vetor;

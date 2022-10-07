@@ -6,7 +6,10 @@ public class App {
         TesteArvoreAvl testeAvl = new TesteArvoreAvl();
         TesteArvoreRubroNegra testeRubroNegra = new TesteArvoreRubroNegra();
         
-        testeAvl.casoMedio();
+        // testeAvl.piorCaso();
+        // testeAvl.casoMedio(); // desconsiderado
 
+        // testeRubroNegra.piorCaso();
+        // testeRubroNegra.casoMedio();
     }
 }
